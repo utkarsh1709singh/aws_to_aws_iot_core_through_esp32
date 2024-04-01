@@ -62,11 +62,13 @@ void connectAWS() {
   Serial.println("AWS IoT Connected!");
 }
 
-void publishMessage(struct tm timeinfo, int metricsValue) {
+void publishMessage(struct tm timeinfo, int metricsValue, const char* clientId, const char* Pincode) {
   // Create a JSON document
   StaticJsonDocument<200> doc;
   
   // Add distance to the JSON document
+  doc["Pincode"] = Pincode;
+  doc["ClientID"] = clientId;
   doc["Distance"] = metricsValue;
 
   // Concatenate time components into a single string

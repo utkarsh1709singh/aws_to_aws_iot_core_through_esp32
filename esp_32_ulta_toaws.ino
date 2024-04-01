@@ -14,6 +14,8 @@ const long interval = 10000;    // Interval between readings (in milliseconds)
 
 const char* ssid = "Utkarsh";
 const char* password = "12345678";
+const char* binId = "ESP32_001";
+const char* Pincode = "122001";
 
 void setup() {
   Serial.begin(9600);
@@ -67,7 +69,7 @@ void loop() {
     Serial.println(" cm");
 
     // Publish timestamp and distance to AWS
-    publishMessage(timeinfo, distance);
+    publishMessage(timeinfo, distance, binId, Pincode);
   }
 
   client.loop();
